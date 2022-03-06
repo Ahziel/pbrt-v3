@@ -290,7 +290,7 @@ ENDIF ()
 ###########################################################################
 # zlib
 
-FIND_PACKAGE ( ZLIB )
+#FIND_PACKAGE ( ZLIB )
 IF(NOT ZLIB_FOUND)
   # Build zlib
   SET(ZLIB_BUILD_STATIC_LIBS ON CACHE BOOL " " FORCE)
@@ -303,6 +303,7 @@ IF(NOT ZLIB_FOUND)
   INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIR} "${CMAKE_CURRENT_BINARY_DIR}/src/ext/zlib")
 ENDIF()
 INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIRS})
+SET(ZLIB_LIBRARIES ${ZLIB_LIBRARY})
 
 ###########################################################################
 # OpenEXR
@@ -347,6 +348,8 @@ INCLUDE_DIRECTORIES (
 
 ###########################################################################
 # ptex
+
+MESSAGE(STATUS "### THIS IS ZLIB : ${ZLIB_LIBRARIES}")
 
 # work around https://github.com/wdas/ptex/issues/28
 IF ( CMAKE_BUILD_TYPE )
